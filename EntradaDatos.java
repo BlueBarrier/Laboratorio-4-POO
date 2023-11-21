@@ -7,9 +7,21 @@
  * @version: 1.0.0
  * @date: 12/11/23
  */
+import java.time.LocalDateTime;
 import java.util.Scanner;
 public class EntradaDatos {
     Scanner scan = new Scanner(System.in);
+
+    public int op(){
+        System.out.println("--Menu--"+
+                            "\n1. Prueba");
+        int op = scan.nextInt();
+        return op;
+    }
+
+
+
+
     public String pedirNombre(){
         System.out.println("Ingrese su nombre: ");
         try {
@@ -70,5 +82,121 @@ public class EntradaDatos {
         return "";
     }
 
+    public String titulo(){
+        System.out.println("Ingrese un título para la reunón: ");
+        try {
+            String tit = scan.nextLine();
+            return tit;
+        } catch (Exception e) {
+            System.out.println("Ingreso invalido!");
+            titulo();
+        }
+        return "ERROR";
+    }
+
+    public int pin(){
+        System.out.println("Ingrese un pin para la reunión: ");
+        try {
+            int pin = scan.nextInt();
+            if (pin<=0) {
+                System.out.println("Ingrese un pin mayor a 0");
+                pin();
+            }else{
+                return pin;
+            }
+        } catch (Exception e) {
+            System.out.println("Ingreso inválido!");
+            pin();
+        }
+        return 0;
+    }
+
+    public int duracion(){
+        System.out.println("Ingrese la duración de la reunión en minutos: ");
+        try {
+            int dura = scan.nextInt();
+            if (dura<=0) {
+                System.out.println("Ingrese una duración mayor a 0 minutos");
+                duracion();
+            }else{
+                return dura;
+            }
+        } catch (Exception e) {
+            System.out.println("Ingreso inválido!");
+            duracion();
+        }
+        return 0;
+    }
+
+    public String fechaR(){
+        System.out.println("Ingrese el año: ");
+        try {
+            String year = scan.nextLine();
+            int ano = Integer.parseInt(year);
+            if (ano>=2023) {
+                try {
+                System.out.println("Ingrese el mes (04): ");
+                    String mes = scan.nextLine();
+                    int meses = Integer.parseInt(mes);
+                    if (1<=meses && meses<=12) {
+                        try {
+                            System.out.println("Ingrese el día (06): ");
+                            String dia = scan.nextLine();
+                            int dias = Integer.parseInt(dia);
+                            if (dias>=1 && dias<=31) {
+                                try {
+                                    System.out.println("Ingrese la hora (02): ");
+                                    String hora = scan.nextLine();
+                                    int horu = Integer.parseInt(hora);
+                                    if (horu>=0 && horu <= 24) {
+                                        try {
+                                            System.out.println("Ingrese los minutos (05): ");
+                                            String min = scan.nextLine();
+                                            int minu = Integer.parseInt(min);
+                                            if (0<=minu && minu<=60) {
+                                                try {
+                                                    LocalDateTime.parse(year+"-"+mes+"-"+dia+"T"+hora+":"+min);
+                                                    return year+"-"+mes+"-"+dia+"T"+hora+":"+min;
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }else{
+                                                System.out.println("Debe estar entre 00 y 60");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Ingreso inválido!");
+                                            fechaR();
+                                        }
+                                    }else{
+                                        System.out.println("Entre 00 - 24");
+                                        fechaR();
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Ingreso inválido!");
+                                    fechaR();
+                                }
+                            }else{
+                                System.out.println("Entre 1 - 31");
+                                fechaR();
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Ingreso inválido!");
+                            fechaR();
+                        }
+                    }else{
+                        System.out.println("Entre enero y diciembre (1 - 12)");
+                        fechaR();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Ingreso inválido!");
+                    fechaR();
+                }
+            }else{System.out.println("Deber ser el mismo año o posterior"); fechaR();}
+        } catch (Exception e) {
+            System.out.println("Ingreso inválido!");
+            fechaR();
+        }
+        return "";
+    }
 
 }

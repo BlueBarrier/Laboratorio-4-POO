@@ -9,6 +9,15 @@
  */
 public class Main {
     public static void main(String[] args) {
+        EntradaDatos entrada = new EntradaDatos();
+        ReunionOp reunion = new ReunionOp();
+        switch (entrada.op()) {
+            case 1:
+                reunion.guardarReunion("test@test.com");
+                break;
         
+            default:
+                break;
+        }
     }
 }

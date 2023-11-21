@@ -111,19 +111,8 @@ public class Registro {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     /**
-     * @return usuarios 
+     * @return usuarios
      */
     public Usuario getUsuario() {
         return usuario;
