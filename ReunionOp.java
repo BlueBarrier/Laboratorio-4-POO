@@ -35,5 +35,17 @@ public class ReunionOp {
         }
     }
 
-    public void 
+    public void cargarReunion(){}
+
+    public void comprobarPlan(){}
+
+    public void guardarNota(){}
+
+    public void cargarNotas(){}
+
+    public void cambiarEstado(){}
+
+    public void guardarInvitado(){}
+
+    public void cargarInvitado(){}
 }
