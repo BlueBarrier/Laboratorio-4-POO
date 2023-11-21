@@ -94,12 +94,16 @@ public class ReunionOp {
             stmtPrep.setString(1, usuario.getCorreo());
             ResultSet rst = stmtPrep.executeQuery();
             
+            invitados.clear();
+            notas.clear();
+            reuniones.clear();
             while (rst.next()) {
                 cargarInvitado(rst.getString("titulo"));
                 cargarNotas(rst.getString("titulo"));
                 reuniones.add(new Reunion(rst.getString("usuario"),LocalDateTime.parse(rst.getString("fecha")),
                 rst.getString("titulo"), rst.getInt("pin"),notas, rst.getInt("duracion"),invitados));
             }
+            usuario.setReuniones(reuniones);
         } catch (Exception e) {
             if (reuniones.isEmpty()) {
                 System.out.println("Sin reuniones!");
