@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class EntradaDatos {
     Scanner scan = new Scanner(System.in);
 
-<<<<<<< HEAD
     public int op(){
         System.out.println("--Menu--"+
                             "\n1. Prueba");
@@ -26,13 +25,6 @@ public class EntradaDatos {
 
 
 
-=======
-    /**
-     * Solicita y devuelve el nombre ingresado por el usuario.
-     * 
-     * @return El nombre ingresado por el usuario.
-     */
->>>>>>> 3940df13efde6391198d901bd50174345ee304a6
     public String pedirNombre(){
         System.out.println("Ingrese su nombre: ");
         try {
@@ -109,7 +101,6 @@ public class EntradaDatos {
         }
         return "";
     }
-<<<<<<< HEAD
 
     public String titulo(){
         System.out.println("Ingrese un título para la reunón: ");
@@ -228,6 +219,4 @@ public class EntradaDatos {
         return "";
     }
 
-=======
->>>>>>> 3940df13efde6391198d901bd50174345ee304a6
 }

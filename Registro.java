@@ -108,7 +108,6 @@ public class Registro {
         return false;
     }
 
-<<<<<<< HEAD
     public void cambiarPlan(){
         if (usuario.getTipo().equals("No Premium")) {
             System.out.println("Se le cobraran Q500 x mes");
@@ -141,14 +140,6 @@ public class Registro {
 
     /**
      * @return usuarios
-=======
-    // Other methods for changing plan and password...
-
-    /**
-     * Getter method for the Usuario object.
-     * 
-     * @return The Usuario object.
->>>>>>> 3940df13efde6391198d901bd50174345ee304a6
      */
     public Usuario getUsuario() {
         return usuario;
