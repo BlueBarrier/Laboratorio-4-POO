@@ -17,11 +17,82 @@ public class EntradaDatos {
 
     public int op(){
         System.out.println("--Menu--"+
-                            "\n1. Prueba");
-        int op = scan.nextInt();
-        return op;
+                            "\n1. Registro"+
+                            "\n2. Reuniones"+
+                            "\n3. Calendario"+
+                            "\n4. Perfil"+
+                            "\n5. Salir");
+        try {
+            int op = scan.nextInt();
+            return op;
+        } catch (Exception e) {
+            System.out.println("Invalido");
+            op();
+        }
+        return 0;
     }
 
+    public int Registro(){
+        System.out.println("--Registro--"+
+                            "\n1. Cambiar plan"+
+                            "\n2. Crear usuario"+
+                            "\n3. Salir");
+        try {
+            int op = scan.nextInt();
+            return op;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Registro();
+        }
+        return 0;
+    }
+
+    public int Reuniones(){
+        System.out.println("--Reunión--"+
+                            "\n1. Crear reunión"+
+                            "\n2. Cambiar disponibilidad"+
+                            "\n3. Crear nota"+
+                            "\n4. Mostrar notas"+
+                            "\n5. Salir");
+        try {
+            int op = scan.nextInt();
+            return op;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Reuniones();
+        }
+        return 0;
+    }
+
+    public int Calendario(){
+        System.out.println("--Calendario--"+
+                            "\n1. Listar reuniones"+
+                            "\n2. Listar contactos"+
+                            "\n3. Salir");
+        try {
+            int op = scan.nextInt();
+            return op;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Calendario();
+        }
+        return 0;
+    }
+
+    public int Perfil(){
+        System.out.println("--Perfil--"+
+                            "\n1. Cambiar plan"+
+                            "\n2. Cambiar contraseña"+
+                            "\n3. Salir");
+        try {
+            int op = scan.nextInt();
+            return op;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Perfil();
+        }
+        return 0;
+    }
 
 
 
@@ -257,6 +328,7 @@ public class EntradaDatos {
         System.out.println("Ingrese el nombre de su invitado: ");
         try {
             String nombre = scan.nextLine();
+            scan.nextLine();
             return nombre;
         } catch (Exception e) {
             System.out.println("Error!");
@@ -264,5 +336,6 @@ public class EntradaDatos {
         }
         return "";
     }
+
 
 }

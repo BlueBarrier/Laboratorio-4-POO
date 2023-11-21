@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class Registro {
     // Variables de instancia
-    private Usuario usuario = null;
+    private Usuario usuario = new Usuario(null, null, null, null, null);
     private String url = "jdbc:sqlite:./db/users.db";
     private static Connection conect = null;
     ResultSet rst = null;
@@ -39,6 +39,7 @@ public class Registro {
             stmt.executeUpdate("INSERT INTO Users('nombre','correo','password','membresia','estado') VALUES ('"+
             nombre+"','"+correo+"','"+password+"','"+tipo+"','"+estado+"')");
             System.out.println("Usuario agregado!");
+            conect.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -65,6 +66,7 @@ public class Registro {
             stmt.executeUpdate("INSERT INTO Users('nombre','correo','password','membresia','estado') VALUES ('"+
             nombre+"','"+correo+"','"+password+"','"+tipo+"','"+estado+"')");
             System.out.println("Usuario actualizado!");
+            conect.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -98,6 +100,7 @@ public class Registro {
                     rst.getString("membresia"),
                     rst.getString("estado"));
                     System.out.println("Bienvenid@ "+ usuario.getNombre());
+                    conect.close();
                     return true;
                 }
             }
@@ -108,7 +111,41 @@ public class Registro {
         return false;
     }
 
-    // Otros métodos para cambiar plan y contraseña...
+    /**
+     *  cambiar plan
+     */
+    public void cambiarPlan(){
+        if (usuario.getTipo().equals("No Premium")) {
+            System.out.println("Se le cobraran Q500 x mes");
+            usuario.setTipo("Premium");
+            actualizarUsuario();
+            cargarUsuario(usuario.getCorreo(), usuario.getPassword());
+        }else if (usuario.getTipo().equals("Premium")) {
+            System.out.println("Perdiste acceso a las funciones Premium");
+            usuario.setTipo("No Premium");
+            actualizarUsuario();
+            cargarUsuario(usuario.getCorreo(), usuario.getPassword());
+        }
+    }
+
+    /**
+     *  cambiar contraseña
+     */
+    public void cambiarPassword(){
+        System.out.println("Ingrese su contraseña anterior");
+        String contraAntes = entrada.pedirPassword();
+        if (contraAntes.equals(usuario.getPassword())) {
+            System.out.println("\nIngrese su nueva contraseña");
+            String contraNueva = entrada.pedirPassword();
+            usuario.setPassword(contraNueva);
+            actualizarUsuario();
+            cargarUsuario(usuario.getCorreo(), usuario.getPassword());
+            System.out.println("Contraseña cambiada");
+        }else{
+            System.out.println("Contraseña incorrecta!");
+            System.out.println("Vuelva a intentarlo");
+        }
+    }
 
     /**
      * Método getter para el objeto Usuario.

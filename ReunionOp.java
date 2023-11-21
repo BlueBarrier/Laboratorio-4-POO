@@ -22,7 +22,7 @@ public class ReunionOp {
     private int conteo = reuniones.size();
     private int inviConteo = invitados.size();
     
-    public void guardarReunion(Usuario usuario){
+    public String guardarReunion(Usuario usuario){
         cargarReunion(usuario);
         if (comprobarPlan(usuario)) {
             if (conteo>=5) {
@@ -49,6 +49,8 @@ public class ReunionOp {
                     stmt.executeUpdate("INSERT INTO Reuniones('usuario','fecha','titulo','pin','duracion') VALUES ('"+
                     usuario.getCorreo()+"','"+fecha+"','"+titulo+"','"+pin+"','"+duracion+"')");
                     System.out.println("Reunión agregada!");
+                    conect.close();
+                    return titulo;
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -78,11 +80,14 @@ public class ReunionOp {
                     stmt.executeUpdate("INSERT INTO Reuniones('usuario','fecha','titulo','pin','duracion') VALUES ('"+
                     usuario.getCorreo()+"','"+fecha+"','"+titulo+"','"+pin+"','"+duracion+"')");
                     System.out.println("Reunión agregada!");
+                    conect.close();
+                    return titulo;
                 } catch (Exception e) {
                     System.out.println(e);
                 }
             }
         }
+        return "";
     }
 
     public void cargarReunion(Usuario usuario){
@@ -104,6 +109,7 @@ public class ReunionOp {
                 rst.getString("titulo"), rst.getInt("pin"),notas, rst.getInt("duracion"),invitados));
             }
             usuario.setReuniones(reuniones);
+            conect.close();
         } catch (Exception e) {
             if (reuniones.isEmpty()) {
                 System.out.println("Sin reuniones!");
@@ -129,6 +135,7 @@ public class ReunionOp {
             stmt.executeUpdate("INSERT INTO Notas('reunion','nota') VALUES ('"+
             reunion+"','"+nota+"')");
             System.out.println("Nota agregada!");
+            conect.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -146,6 +153,7 @@ public class ReunionOp {
             while (rst.next()) {
                 notas.add(rst.getString("nota"));
             }
+            conect.close();
         } catch (Exception e) {
             if (notas.isEmpty()) {
                 System.out.println("Sin notas aún!");
@@ -179,6 +187,7 @@ public class ReunionOp {
                     stmt.executeUpdate("INSERT INTO Invitados('reunion','nombre') VALUES ('"+
                     reunion+"','"+invitado+"')");
                     System.out.println("Invitado agregad@!");
+                    conect.close();
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -196,6 +205,7 @@ public class ReunionOp {
                     stmt.executeUpdate("INSERT INTO Invitados('reunion','nombre') VALUES ('"+
                     reunion+"','"+invitado+"')");
                     System.out.println("Invitado agregad@!");
+                    conect.close();
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -215,6 +225,7 @@ public class ReunionOp {
             while (rst.next()) {
                 invitados.add(new Invitado(rst.getString("nombre"), reunion));
             }
+            conect.close();
         } catch (Exception e) {
             if (invitados.isEmpty()) {
                 System.out.println("Sin invitados aún!");
