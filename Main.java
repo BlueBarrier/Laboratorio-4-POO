@@ -13,7 +13,6 @@ public class Main {
         ReunionOp reunion = new ReunionOp();
         switch (entrada.op()) {
             case 1:
-                reunion.guardarReunion("test@test.com");
                 break;
         
             default:

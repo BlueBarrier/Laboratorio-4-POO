@@ -131,19 +131,41 @@ public class EntradaDatos {
         return 0;
     }
 
-    public int duracion(){
+    public int duracionPremium(){
         System.out.println("Ingrese la duración de la reunión en minutos: ");
         try {
             int dura = scan.nextInt();
             if (dura<=0) {
                 System.out.println("Ingrese una duración mayor a 0 minutos");
-                duracion();
-            }else{
+                duracionPremium();
+            }else if(dura<=60){
                 return dura;
+            }else{
+                System.out.println("No exceda el limite de 60 min");
+                duracionPremium();
             }
         } catch (Exception e) {
             System.out.println("Ingreso inválido!");
-            duracion();
+            duracionPremium();
+        }
+        return 0;
+    }
+    public int duracionNoPremium(){
+        System.out.println("Ingrese la duración de la reunión en minutos: ");
+        try {
+            int dura = scan.nextInt();
+            if (dura<=0) {
+                System.out.println("Ingrese una duración mayor a 0 minutos");
+                duracionNoPremium();
+            }else if(dura<=15){
+                return dura;
+            }else{
+                System.out.println("No exceda el limite de 15 min");
+                duracionNoPremium();
+            }
+        } catch (Exception e) {
+            System.out.println("Ingreso inválido!");
+            duracionNoPremium();
         }
         return 0;
     }
@@ -215,6 +237,30 @@ public class EntradaDatos {
         } catch (Exception e) {
             System.out.println("Ingreso inválido!");
             fechaR();
+        }
+        return "";
+    }
+
+    public String nota(){
+        System.out.println("Ingrese su nota: ");
+        try {
+            String nota = scan.nextLine();
+            return nota;
+        } catch (Exception e) {
+            System.out.println("Error! intente de nuevo");
+            nota();
+        }
+        return "";
+    }
+
+    public String nombreInvitado(){
+        System.out.println("Ingrese el nombre de su invitado: ");
+        try {
+            String nombre = scan.nextLine();
+            return nombre;
+        } catch (Exception e) {
+            System.out.println("Error!");
+            e.printStackTrace();
         }
         return "";
     }
