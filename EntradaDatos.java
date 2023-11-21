@@ -3,15 +3,19 @@
  * Departamento de Ciencias de la Computación
  * Programación Orientada a Objetos
  * 
+ * Esta clase proporciona métodos para la entrada de datos desde la consola.
+ * 
  * @author: Erick Barrera, Marian Montejo, Isabella Ramírez
  * @version: 1.0.0
  * @date: 12/11/23
  */
 import java.time.LocalDateTime;
 import java.util.Scanner;
+
 public class EntradaDatos {
     Scanner scan = new Scanner(System.in);
 
+<<<<<<< HEAD
     public int op(){
         System.out.println("--Menu--"+
                             "\n1. Prueba");
@@ -22,6 +26,13 @@ public class EntradaDatos {
 
 
 
+=======
+    /**
+     * Solicita y devuelve el nombre ingresado por el usuario.
+     * 
+     * @return El nombre ingresado por el usuario.
+     */
+>>>>>>> 3940df13efde6391198d901bd50174345ee304a6
     public String pedirNombre(){
         System.out.println("Ingrese su nombre: ");
         try {
@@ -34,6 +45,11 @@ public class EntradaDatos {
         return "";
     }
 
+    /**
+     * Solicita y devuelve el correo ingresado por el usuario.
+     * 
+     * @return El correo ingresado por el usuario.
+     */
     public String pedirCorreo(){
         System.out.println("Ingrese su correo: ");
         try {
@@ -46,6 +62,11 @@ public class EntradaDatos {
         return "";
     }
 
+    /**
+     * Solicita y devuelve la contraseña ingresada por el usuario.
+     * 
+     * @return La contraseña ingresada por el usuario.
+     */
     public String pedirPassword(){
         System.out.println("Ingrese su contraseña: ");
         try {
@@ -58,8 +79,13 @@ public class EntradaDatos {
         return "";
     }
 
+    /**
+     * Solicita y devuelve el tipo de membresía deseado por el usuario.
+     * 
+     * @return El tipo de membresía seleccionado por el usuario ("Premium" o "No Premium").
+     */
     public String pedirTipo(){
-        System.out.println("¿Quisiera obtener todos los beneficios de una membresia Premium?");
+        System.out.println("¿Quisiera obtener todos los beneficios de una membresía Premium?");
         System.out.println("1. Si - costo Q500 x mes"+
                            "\n2. No - gratis"+
                            "Ingrese una opción numérica");
@@ -71,16 +97,19 @@ public class EntradaDatos {
                 if (op == 1) {
                     System.out.println("Se le cobraran Q500 x mes");
                     return "Premium";
-                }else if (op == 2) {
+                } else if (op == 2) {
                     return "No Premium";
                 }
-            }else{pedirTipo();}
+            } else {
+                pedirTipo();
+            }
         } catch (Exception e) {
             System.out.println("Ingreso inválido");
             pedirTipo();
         }
         return "";
     }
+<<<<<<< HEAD
 
     public String titulo(){
         System.out.println("Ingrese un título para la reunón: ");
@@ -199,4 +228,6 @@ public class EntradaDatos {
         return "";
     }
 
+=======
+>>>>>>> 3940df13efde6391198d901bd50174345ee304a6
 }
